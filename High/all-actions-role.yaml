@@ -1,22 +1,23 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: check-list-all-resource-apigroups-role
+  name: check-privilege-escalation-for-node-proxy
   annotations:
-    policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles
+    policies.kyverno.io/title: Privilege Escalation from Node/Proxy
     policies.kyverno.io/category: RBAC
-    policies.kyverno.io/severity: Critical
+    policies.kyverno.io/severity: CRITICAL
     policies.kyverno.io/minversion: 1.12.0
     kyverno.io/kyverno-version: 1.12.0
     kyverno.io/kubernetes-version: "1.22-1.23"
     policies.kyverno.io/subject: ClusterRoleBinding
     policies.kyverno.io/description: >-
-      This policy will check for all the service accounts which are mapped with the 
+      This policy will check for all the service accounts which are mapped with the wildcard verb and apiGroup for given resources 
+      (secrets, pods, deployments, daemonsets, replicationcontrollers, replicasets, jobs, cronjobs, roles, clusterrolebindings, users, groups )
 spec:
   validationFailureAction: Audit
   background: true
   rules:
-    - name: check-wildcard-resource-apigroup-list-permission-clusterrole
+    - name: risky-execute-command-node-proxy-clusterrole
       match:
         any:
         - resources:
@@ -33,15 +34,15 @@ spec:
         deny:
           conditions:
             any:
-              - key: "{{ contains(role.rules[].verbs[], 'list') && contains(role.rules[].resources[], '*') && contains(role.rules[].apiGroups[], '*') }}"
+              - key: "{{ (contains(role.rules[].verbs[], 'get') || contains(role.rules[].verbs[], 'create')) && contains(role.rules[].resources[], 'nodes/proxy') && contains(role.rules[].apiGroups[], '*') }}"
                 operator: Equals
                 value: true
-    - name: check-wildcard-resource-apigroup-list-permission-role
+    - name: risky-execute-command-node-proxy-roles
       match:
         any:
-        - resources:
-            kinds:
-            - RoleBinding
+          - resources:
+              kinds:
+                - RoleBinding
       preconditions:
         any:
         - key: "{{ request.object.roleRef.kind || 'ClusterRole' }}"
@@ -53,11 +54,11 @@ spec:
             urlPath: "/apis/rbac.authorization.k8s.io/v1/namespaces/{{ request.object.metadata.namespace }}/roles/{{ request.object.roleRef.name }}"
       validate:
         message: >- 
-           RoleBinding "{{ request.object.metadata.name }}" with subjects {{ request.object.subjects[].name }}
+           RoleBinding {{ request.object.metadata.name }} with subjects {{ request.object.subjects[].name }} 
            is using role {{role.metadata.name}}
         deny:
           conditions:
             any:
-              - key: "{{ contains(role.rules[].verbs[], 'list') && contains(role.rules[].resources[], '*') && contains(role.rules[].apiGroups[], '*') }}"
+              - key: "{{ ( contains(role.rules[].verbs[], 'get') || contains(role.rules[].verbs[], 'create')) && contains(role.rules[].resources[], 'nodes/proxy') && contains(role.rules[].apiGroups[], '*') }}"
                 operator: Equals
                 value: true

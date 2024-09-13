@@ -5,7 +5,7 @@ metadata:
   annotations:
     policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles
     policies.kyverno.io/category: RBAC
-    policies.kyverno.io/severity: CRITICAL
+    policies.kyverno.io/severity: Critical
     policies.kyverno.io/minversion: 1.12.0
     kyverno.io/kyverno-version: 1.12.0
     kyverno.io/kubernetes-version: "1.22-1.23"
@@ -29,7 +29,7 @@ spec:
       validate:
         message: >- 
            ClusterRoleBinding "{{ request.object.metadata.name }}" with subjects {{ request.object.subjects[].name }}
-           is using wildcard verbs {{role.rules[].verbs[]}} with role {{role.metadata.name}}
+           is using role {{role.metadata.name}}
         deny:
           conditions:
             any:
@@ -42,11 +42,11 @@ spec:
         - resources:
             kinds:
             - RoleBinding
-      exclude:
+      preconditions:
         any:
-        - resources:
-            namespaces:
-            - nirmata
+        - key: "{{ request.object.roleRef.kind || 'ClusterRole' }}"
+          operator: NotEquals
+          value: ClusterRole
       context:
         - name: role
           apiCall:
@@ -54,7 +54,7 @@ spec:
       validate:
         message: >- 
            RoleBinding "{{ request.object.metadata.name }}" with subjects {{ request.object.subjects[].name }}
-           is using wildcard verbs {{role.rules[].verbs[]}} with role {{role.metadata.name}}
+           is using role {{role.metadata.name}}
         deny:
           conditions:
             any:
