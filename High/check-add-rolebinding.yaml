@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: check-risky-add-rolebinding
+  name: check-check-add-rolebinding
   annotations:
     policies.kyverno.io/title:  Allowing users in a rolebinding to add other users to their rolebindings
     policies.kyverno.io/category: RBAC
@@ -16,7 +16,7 @@ spec:
   validationFailureAction: Audit
   background: true
   rules:
-    - name: risky-create-update-malicious-resource-roles
+    - name: check-create-update-malicious-resource-roles
       match:
         any:
           - resources:

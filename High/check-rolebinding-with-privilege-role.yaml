@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: check-risky-create-binding-privilege-role
+  name: check-check-create-binding-privilege-role
   annotations:
     policies.kyverno.io/title: Allowing creation of rolebinding/clusterrolebinding and associate privileged clusterrole to itself
     policies.kyverno.io/category: RBAC
@@ -16,7 +16,7 @@ spec:
   validationFailureAction: Audit
   background: true
   rules:
-    - name: risky-create-update-malicious-resource-roles
+    - name: check-create-update-malicious-resource-roles
       match:
         any:
           - resources:

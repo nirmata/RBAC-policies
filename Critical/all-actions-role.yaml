@@ -29,7 +29,7 @@ spec:
             urlPath: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{{ request.object.roleRef.name }}"
       validate:
         message: >- 
-           ClusterRoleBinding "{{ request.object.metadata.name }}" with subjects {{ request.object.subjects[].name }}
+           ClusterRoleBinding {{ request.object.metadata.name }} with subjects {{ request.object.subjects[].name }}
            is using role {{role.metadata.name}}
         deny:
           conditions:
