@@ -3,15 +3,15 @@ kind: ClusterPolicy
 metadata:
   name: check-impersonate-group-role
   annotations:
-    policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles
+    policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles which allow impersonating a group.
     policies.kyverno.io/category: RBAC
-    policies.kyverno.io/severity: Critical
-    policies.kyverno.io/minversion: 1.6.0
-    kyverno.io/kyverno-version: 1.6.0
-    kyverno.io/kubernetes-version: "1.22-1.23"
+    policies.kyverno.io/severity: critical
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.28"
     policies.kyverno.io/subject: ClusterRoleBinding
     policies.kyverno.io/description: >-
-      This policy will check for all the service accounts which are mapped with the 
+      This policy will check for all the service accounts which are mapped with the Roles/ClusterRoles allowing impersonating a groups.
 spec:
   validationFailureAction: Audit
   background: true

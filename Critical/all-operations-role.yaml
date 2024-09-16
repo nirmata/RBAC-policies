@@ -3,15 +3,16 @@ kind: ClusterPolicy
 metadata:
   name: check-any-operation-role
   annotations:
-    policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles
+    policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles which allow operation on any resource.
     policies.kyverno.io/category: RBAC
-    policies.kyverno.io/severity: Critical
+    policies.kyverno.io/severity: critical
     policies.kyverno.io/minversion: 1.12.0
     kyverno.io/kyverno-version: 1.12.0
-    kyverno.io/kubernetes-version: "1.22-1.23"
+    kyverno.io/kubernetes-version: "1.28"
     policies.kyverno.io/subject: ClusterRoleBinding
     policies.kyverno.io/description: >-
-      This policy will check for all the service accounts which are mapped with the 
+      This policy will check for all the service accounts which are mapped with the wildcard resource and apiGroup for given verb 
+      (delete, deletecollection, create, list, get, impersonate) 
 spec:
   validationFailureAction: Audit
   background: true

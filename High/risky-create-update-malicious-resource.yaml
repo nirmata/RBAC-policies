@@ -5,14 +5,14 @@ metadata:
   annotations:
     policies.kyverno.io/title: Allowing to create a malicious pod
     policies.kyverno.io/category: RBAC
-    policies.kyverno.io/severity: High
+    policies.kyverno.io/severity: high
     policies.kyverno.io/minversion: 1.12.0
     kyverno.io/kyverno-version: 1.12.0
     kyverno.io/kubernetes-version: "1.22-1.23"
     policies.kyverno.io/subject: ClusterRoleBinding
     policies.kyverno.io/description: >-
-      This policy will check for all the service accounts which are mapped with the wildcard verb and apiGroup for given resources 
-      (secrets, pods, deployments, daemonsets, replicationcontrollers, replicasets, jobs, cronjobs, roles, clusterrolebindings, users, groups )
+      This policy will check for all the service accounts which are mapped with Roles/ClusterRoles allowing user to create malicious pods
+      (deployment, daemonsets, statefulsets, replicationcontollers, replicasets, jobs, cronjobs) for wildcard apiGroups.
 spec:
   validationFailureAction: Audit
   background: true
