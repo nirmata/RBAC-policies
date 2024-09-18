@@ -1,0 +1,50 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: badcrb01
+subjects:
+- kind: Group
+  name: manager
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: badcr01
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: badcrb02
+subjects:
+- kind: ServiceAccount
+  namespace: foo
+  name: manager
+roleRef:
+  kind: ClusterRole
+  name: badcr01
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: badcr01
+rules:
+- apiGroups: ["*"]
+  resources:
+  - secrets
+  - pods
+  - deployments
+  - daemonsets
+  - statefulsets
+  - replicationcontrollers
+  - replicasets
+  - cronjobs
+  - jobs
+  - roles
+  - clusterroles
+  - rolebindings
+  - clusterrolebindings
+  - users
+  - groups
+  verbs:
+  - get
