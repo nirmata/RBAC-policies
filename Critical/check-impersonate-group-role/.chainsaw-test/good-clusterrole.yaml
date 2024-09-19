@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: goodcr
+rules:
+- apiGroups: ["*"]
+  resources:
+  - secrets
+  - pods
+  - deployments
+  - daemonsets
+  - statefulsets
+  - replicationcontrollers
+  - replicasets
+  - cronjobs
+  - jobs
+  - roles
+  - clusterroles
+  - rolebindings
+  - clusterrolebindings
+  - users
+  - groups
+  verbs:
+  - get

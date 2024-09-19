@@ -1,25 +1,25 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: goodrb01
+  name: badrb01
 subjects:
 - kind: User
   name: foo
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: risky-any-verb-secrets
+  name: risky-impersonate-groups
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: goodrb02
+  name: badrb02
 subjects:
 - kind: ServiceAccount
   name: foo
   namespace: foo
 roleRef:
   kind: Role
-  name: risky-any-verb-pods
+  name: risky-impersonate-groups
   apiGroup: rbac.authorization.k8s.io

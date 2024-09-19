@@ -8,7 +8,7 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: badrole1
+  name: risky-any-verb-secrets
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -21,29 +21,5 @@ subjects:
   namespace: foo
 roleRef:
   kind: Role
-  name: badrole1
+  name: risky-any-verb-pods
   apiGroup: rbac.authorization.k8s.io
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: badrole1
-rules:
-- apiGroups: ["*"]
-  resources:
-  - secrets
-  - pods
-  - deployments
-  - daemonsets
-  - statefulsets
-  - replicationcontrollers
-  - replicasets
-  - cronjobs
-  - jobs
-  - roles
-  - clusterroles
-  - rolebindings
-  - clusterrolebindings
-  - users
-  - groups
-  verbs: ["*"]

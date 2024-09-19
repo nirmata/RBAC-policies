@@ -8,7 +8,7 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: badcr
+  name: risky-impersonate-groups
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -21,5 +21,5 @@ subjects:
   name: manager
 roleRef:
   kind: ClusterRole
-  name: badcr
+  name: risky-impersonate-groups
   apiGroup: rbac.authorization.k8s.io
