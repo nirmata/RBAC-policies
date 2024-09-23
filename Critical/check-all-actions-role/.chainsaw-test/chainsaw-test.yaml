@@ -6,10 +6,11 @@ metadata:
   name: check-all-actions-role
 spec:
   steps:
+  
   - name: step-01
     try:
     - apply:
-        file: ../all-actions-role.yaml
+        file: ../check-all-actions-role.yaml
     - patch:
         resource:
           apiVersion: kyverno.io/v1
@@ -20,27 +21,34 @@ spec:
             validationFailureAction: Enforce
     - assert:
         file: chainsaw-step-01-assert-1.yaml
+
+  
   - name: step-02
     try:
     - apply:
         file: bad-role.yaml
-    - apply:
-        file: good-role.yaml
-    - apply:
-        file: bad-clusterrole.yaml
-    - apply:
-        file: good-clusterrole.yaml
-    - apply:
-        file: rb-good.yaml
     - apply:
         expect:
         - check:
             ($error != null): true
         file: rb-bad.yaml
     - apply:
-        file: crb-good.yaml
+        file: good-role.yaml
+    - apply:
+        file: rb-good.yaml
+    - apply:
+        file: bad-clusterrole.yaml
     - apply:
         expect:
         - check:
             ($error != null): true
         file: crb-bad.yaml
+    - apply:
+        file: good-clusterrole.yaml
+    - apply:
+        file: crb-good.yaml
+    
+    
+    
+  
+  

@@ -1,9 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-secrets
-  
 rules:
 - apiGroups: ["*"]
   resources: ["secrets"]
@@ -12,7 +10,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-pods
   
 rules:
@@ -23,7 +20,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-deployments
   
 rules:
@@ -34,7 +30,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-daemonsets
   
 rules:
@@ -45,7 +40,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-statefulsets
   
 rules:
@@ -56,7 +50,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-replicationcontrollers
   
 rules:
@@ -67,7 +60,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-replicasets
   
 rules:
@@ -78,7 +70,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-cronjobs
   
 rules:
@@ -89,7 +80,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-jobs
   
 rules:
@@ -100,7 +90,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-roles
   
 rules:
@@ -111,7 +100,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-clusterroles
   
 rules:
@@ -122,7 +110,6 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-rolebindings
   
 rules:
@@ -133,9 +120,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-clusterrolebindings
-  
 rules:
 - apiGroups: ["*"]
   resources: ["clusterrolebindings"]
@@ -144,9 +129,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-users
-  
 rules:
 - apiGroups: ["*"]
   resources: ["users"]
@@ -155,10 +138,9 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-any-verb-groups
-  
 rules:
 - apiGroups: ["*"]
   resources: ["groups"]
   verbs: ["*"]
+

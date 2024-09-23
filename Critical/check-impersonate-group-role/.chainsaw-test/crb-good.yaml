@@ -1,25 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: goodcrb01
-subjects:
-- kind: Group
-  name: manager
-  apiGroup: rbac.authorization.k8s.io
-roleRef:
-  kind: ClusterRole
-  name: goodcr
-  apiGroup: rbac.authorization.k8s.io
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: goodcrb02
+  name: goodcrb
 subjects:
 - kind: ServiceAccount
-  namespace: foo
+  namespace: test4
   name: manager
 roleRef:
   kind: ClusterRole
-  name: goodcr
+  name: risky-impersonate-groups
   apiGroup: rbac.authorization.k8s.io

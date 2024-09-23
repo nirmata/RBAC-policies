@@ -1,11 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
+  namespace: test2
   name: badrb01
 subjects:
-- kind: User
-  name: foo
-  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  name: bar1
+  namespace: bar
 roleRef:
   kind: Role
   name: risky-any-verb-secrets
@@ -14,12 +15,195 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
+  namespace: test2
   name: badrb02
 subjects:
 - kind: ServiceAccount
-  name: foo
-  namespace: foo
+  name: bar2
+  namespace: bar
 roleRef:
   kind: Role
   name: risky-any-verb-pods
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb03
+subjects:
+- kind: ServiceAccount
+  name: bar3
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-deployments
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb04
+subjects:
+- kind: ServiceAccount
+  name: bar4
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-daemonsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb05
+subjects:
+- kind: ServiceAccount
+  name: bar5
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-statefulsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb06
+subjects:
+- kind: ServiceAccount
+  name: bar6
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-replicationcontrollers
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb07
+subjects:
+- kind: ServiceAccount
+  name: bar7
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-replicasets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb08
+subjects:
+- kind: ServiceAccount
+  name: bar8
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-cronjobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb09
+subjects:
+- kind: ServiceAccount
+  name: bar9
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-jobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb10
+subjects:
+- kind: ServiceAccount
+  name: bar10
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-roles
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb11
+subjects:
+- kind: ServiceAccount
+  name: bar11
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-clusterroles
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb12
+subjects:
+- kind: ServiceAccount
+  name: bar12
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-rolebindings
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb13
+subjects:
+- kind: ServiceAccount
+  name: bar13
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-clusterrolebindings
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb14
+subjects:
+- kind: ServiceAccount
+  name: bar14
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-users
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb15
+subjects:
+- kind: ServiceAccount
+  name: bar15
+  namespace: bar
+roleRef:
+  kind: Role
+  name: risky-any-verb-groups
   apiGroup: rbac.authorization.k8s.io

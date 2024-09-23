@@ -3,12 +3,12 @@ kind: ClusterRoleBinding
 metadata:
   name: goodcrb01
 subjects:
-- kind: Group
-  name: manager
-  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  namespace: test4
+  name: foo1
 roleRef:
   kind: ClusterRole
-  name: goodcr
+  name: risky-any-verb-secrets
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -17,9 +17,178 @@ metadata:
   name: goodcrb02
 subjects:
 - kind: ServiceAccount
-  namespace: foo
-  name: manager
+  namespace: test4
+  name: foo2
 roleRef:
   kind: ClusterRole
-  name: goodcr
+  name: risky-any-verb-pods
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb03
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo3
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-deployments
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb04
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo4
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-daemonsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb05
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo5
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-statefulsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb06
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo6
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-replicationcontrollers
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb07
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo7
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-replicasets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb08
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo8
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-cronjobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb09
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo9
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-jobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb10
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo10
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-roles
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb11
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo11
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-clusterroles
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb12
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo12
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-rolebindings
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb13
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo13
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-clusterrolebindings
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb14
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo14
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-users
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb15
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: foo14
+roleRef:
+  kind: ClusterRole
+  name: risky-any-verb-groups
   apiGroup: rbac.authorization.k8s.io

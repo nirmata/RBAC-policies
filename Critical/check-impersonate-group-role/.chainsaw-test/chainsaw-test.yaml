@@ -24,23 +24,23 @@ spec:
     try:
     - apply:
         file: bad-role.yaml
-    # - apply:
-    #     file: good-role.yaml
-    - apply:
-        file: bad-clusterrole.yaml
-    # - apply:
-    #     file: good-clusterrole.yaml
-    # - apply:
-    #     file: rb-good.yaml
     - apply:
         expect:
         - check:
             ($error != null): true
         file: rb-bad.yaml
-    # - apply:
-    #     file: crb-good.yaml
+    - apply:
+        file: good-role.yaml
+    - apply:
+        file: rb-good.yaml
+    - apply:
+        file: bad-clusterrole.yaml
     - apply:
         expect:
         - check:
             ($error != null): true
         file: crb-bad.yaml
+    - apply:
+        file: good-clusterrole.yaml
+    - apply:
+        file: crb-good.yaml

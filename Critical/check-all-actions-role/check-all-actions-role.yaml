@@ -12,7 +12,7 @@ metadata:
     policies.kyverno.io/subject: ClusterRoleBinding
     policies.kyverno.io/description: >-
       This policy will check for all the service accounts which are mapped with the wildcard verb and apiGroup for given resources 
-      (secrets, pods, deployments, daemonsets, replicationcontrollers, replicasets, jobs, cronjobs, roles, clusterrolebindings, users, groups )
+      (secrets, pods, deployments, statefulsets, daemonsets, replicationcontrollers, replicasets, jobs, cronjobs, roles, clusterrolebindings, users, groups )
 spec:
   validationFailureAction: Audit
   background: true

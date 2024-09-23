@@ -1,9 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  namespace: default
   name: risky-impersonate-groups
-  
 rules:
 - apiGroups: ["*"]
   resources: ["groups"]
