@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: check-any-operation-role
+  name: check-any-operations-role
   annotations:
     policies.kyverno.io/title: Check for ServiceAccounts with non compliant Roles/ClusterRoles
     policies.kyverno.io/category: RBAC

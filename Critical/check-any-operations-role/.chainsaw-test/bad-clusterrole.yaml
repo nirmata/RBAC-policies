@@ -1,0 +1,55 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-delete
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-delete
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["deletecollection"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-create
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-list
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-get
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole
+metadata:
+  name: risky-any-resource-impersonate
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["impersonate"]
+
+

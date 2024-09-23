@@ -1,0 +1,61 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-delete
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-delete
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["deletecollection"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-create
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-list
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-get
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: risky-any-resource-impersonate
+rules:
+- apiGroups: ["*"]
+  resources: ["deployment"]
+  verbs: ["impersonate"]
+
+
