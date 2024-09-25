@@ -8,5 +8,5 @@ subjects:
   name: bar
 roleRef:
   kind: ClusterRole
-  name: risky-impersonate-groups
+  name: check-impersonate-groups
   apiGroup: rbac.authorization.k8s.io

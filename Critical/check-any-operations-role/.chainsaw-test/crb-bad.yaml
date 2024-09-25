@@ -8,7 +8,7 @@ subjects:
   name: foo1
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -21,7 +21,7 @@ subjects:
   name: foo2
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -34,7 +34,7 @@ subjects:
   name: foo3
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-create
+  name: check-any-resource-create
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -47,7 +47,7 @@ subjects:
   name: foo4
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-list
+  name: check-any-resource-list
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -60,7 +60,7 @@ subjects:
   name: foo5
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-get
+  name: check-any-resource-get
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -73,5 +73,5 @@ subjects:
   name: foo6
 roleRef:
   kind: ClusterRole
-  name: risky-any-resource-impersonate
+  name: check-any-resource-impersonate
   apiGroup: rbac.authorization.k8s.io

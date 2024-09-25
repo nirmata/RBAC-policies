@@ -9,5 +9,5 @@ subjects:
   namespace: test2
 roleRef:
   kind: Role
-  name: risky-impersonate-groups
+  name: check-impersonate-groups
   apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: goodrb01
+  namespace: test4
+subjects:
+- kind: ServiceAccount
+  name: foo
+  namespace: test4
+roleRef:
+  kind: Role
+  name: check-get-secrets
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: goodrb02
+  namespace: test4
+subjects:
+- kind: ServiceAccount
+  name: foo
+  namespace: test2
+roleRef:
+  kind: Role
+  name: check-list-secrets
+  apiGroup: rbac.authorization.k8s.io

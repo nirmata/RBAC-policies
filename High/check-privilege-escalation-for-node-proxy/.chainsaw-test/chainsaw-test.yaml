@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kyverno/chainsaw/main/.schemas/json/test-chainsaw-v1alpha1.json
+apiVersion: chainsaw.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  creationTimestamp: null
+  name: check-privilege-escalation-for-node-proxy
+spec:
+  steps:
+  - name: step-01
+    try:
+    - apply:
+        file: ../check-privilege-escalation-for-node-proxy.yaml
+    - patch:
+        resource:
+          apiVersion: kyverno.io/v1
+          kind: ClusterPolicy
+          metadata:
+            name: check-privilege-escalation-for-node-proxy
+          spec:
+            validationFailureAction: Enforce
+    - assert:
+        file: chainsaw-step-01-assert-1.yaml
+  - name: step-02
+    try:
+    - apply:
+        file: bad-role.yaml
+    - apply:
+        expect:
+        - check:
+            ($error != null): true
+        file: rb-bad.yaml
+    - apply:
+        file: good-role.yaml
+    - apply:
+        file: rb-good.yaml
+    - apply:
+        file: bad-clusterrole.yaml
+    - apply:
+        expect:
+        - check:
+            ($error != null): true
+        file: crb-bad.yaml
+    - apply:
+        file: good-clusterrole.yaml
+    - apply:
+        file: crb-good.yaml

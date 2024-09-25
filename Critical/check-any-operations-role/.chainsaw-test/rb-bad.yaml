@@ -9,7 +9,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -23,7 +23,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -37,7 +37,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-create
+  name: check-any-resource-create
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -51,7 +51,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-list
+  name: check-any-resource-list
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -65,7 +65,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-get
+  name: check-any-resource-get
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -79,5 +79,5 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-resource-impersonate
+  name: check-any-resource-impersonate
   apiGroup: rbac.authorization.k8s.io

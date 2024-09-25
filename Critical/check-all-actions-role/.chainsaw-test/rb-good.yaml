@@ -9,7 +9,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-secrets
+  name: check-any-verb-secrets
   apiGroup: rbac.authorization.k8s.io
 
 ---
@@ -24,7 +24,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-pods
+  name: check-any-verb-pods
   apiGroup: rbac.authorization.k8s.io
 
 ---
@@ -39,7 +39,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-deployments
+  name: check-any-verb-deployments
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -53,7 +53,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-daemonsets
+  name: check-any-verb-daemonsets
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -67,7 +67,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-statefulsets
+  name: check-any-verb-statefulsets
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -81,7 +81,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-replicationcontrollers
+  name: check-any-verb-replicationcontrollers
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -95,7 +95,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-replicasets
+  name: check-any-verb-replicasets
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -109,7 +109,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-cronjobs
+  name: check-any-verb-cronjobs
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -123,7 +123,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-jobs
+  name: check-any-verb-jobs
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -137,7 +137,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-roles
+  name: check-any-verb-roles
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -151,7 +151,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-clusterroles
+  name: check-any-verb-clusterroles
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -165,7 +165,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-rolebindings
+  name: check-any-verb-rolebindings
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -179,7 +179,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-clusterrolebindings
+  name: check-any-verb-clusterrolebindings
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -193,7 +193,7 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-users
+  name: check-any-verb-users
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -207,5 +207,5 @@ subjects:
   namespace: bar
 roleRef:
   kind: Role
-  name: risky-any-verb-groups
+  name: check-any-verb-groups
   apiGroup: rbac.authorization.k8s.io

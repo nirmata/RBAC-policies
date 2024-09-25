@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]
@@ -12,7 +12,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-delete
+  name: check-any-resource-delete
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]
@@ -22,7 +22,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-create
+  name: check-any-resource-create
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]
@@ -32,7 +32,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-list
+  name: check-any-resource-list
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]
@@ -42,7 +42,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-get
+  name: check-any-resource-get
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]
@@ -52,7 +52,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-resource-impersonate
+  name: check-any-resource-impersonate
 rules:
 - apiGroups: ["*"]
   resources: ["deployment"]

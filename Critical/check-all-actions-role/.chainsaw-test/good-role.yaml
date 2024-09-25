@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-secrets
+  name: check-any-verb-secrets
   
 rules:
 - apiGroups: ["*"]
@@ -14,7 +14,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-pods
+  name: check-any-verb-pods
   
 rules:
 - apiGroups: ["*"]
@@ -26,7 +26,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-deployments
+  name: check-any-verb-deployments
   
 rules:
 - apiGroups: ["*"]
@@ -37,7 +37,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-daemonsets
+  name: check-any-verb-daemonsets
   
 rules:
 - apiGroups: ["*"]
@@ -48,7 +48,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-statefulsets
+  name: check-any-verb-statefulsets
   
 rules:
 - apiGroups: ["*"]
@@ -59,7 +59,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-replicationcontrollers
+  name: check-any-verb-replicationcontrollers
   
 rules:
 - apiGroups: ["*"]
@@ -70,7 +70,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-replicasets
+  name: check-any-verb-replicasets
   
 rules:
 - apiGroups: ["*"]
@@ -81,7 +81,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-cronjobs
+  name: check-any-verb-cronjobs
   
 rules:
 - apiGroups: ["*"]
@@ -92,7 +92,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-jobs
+  name: check-any-verb-jobs
   
 rules:
 - apiGroups: ["*"]
@@ -103,7 +103,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-roles
+  name: check-any-verb-roles
   
 rules:
 - apiGroups: ["*"]
@@ -114,7 +114,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-clusterroles
+  name: check-any-verb-clusterroles
   
 rules:
 - apiGroups: ["*"]
@@ -125,7 +125,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-rolebindings
+  name: check-any-verb-rolebindings
   
 rules:
 - apiGroups: ["*"]
@@ -136,7 +136,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-clusterrolebindings
+  name: check-any-verb-clusterrolebindings
   
 rules:
 - apiGroups: ["*"]
@@ -147,7 +147,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-users
+  name: check-any-verb-users
   
 rules:
 - apiGroups: ["*"]
@@ -158,7 +158,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: test4
-  name: risky-any-verb-groups
+  name: check-any-verb-groups
   
 rules:
 - apiGroups: ["*"]
