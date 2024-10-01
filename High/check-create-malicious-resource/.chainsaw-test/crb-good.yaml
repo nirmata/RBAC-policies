@@ -1,0 +1,103 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb02
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo2
+roleRef:
+  kind: ClusterRole
+  name: check-create-pods
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb03
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo3
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-deployments
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb04
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo4
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-daemonsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb05
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo5
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-statefulsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb06
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo6
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-replicationcontrollers
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb07
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo7
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-replicasets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb08
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo8
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-cronjobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb09
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: foo9
+roleRef:
+  kind: ClusterRole
+  name: check-create-update-jobs
+  apiGroup: rbac.authorization.k8s.io

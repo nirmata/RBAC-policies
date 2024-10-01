@@ -1,0 +1,87 @@
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-pods
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["pods"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-deployments
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["deployments"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-daemonsets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["daemonsets"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-statefulsets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["statefulsets"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-replicationcontrollers
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["replicationcontrollers"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-replicasets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["replicasets"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-cronjobs
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["cronjobs"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test4
+  name: check-create-update-jobs
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["jobs"]
+  verbs: ["get"]

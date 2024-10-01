@@ -1,0 +1,161 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-secrets
+rules:
+- apiGroups: ["*"]
+  resources: ["secrets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-pods
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["pods"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-deployments
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["deployments"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-daemonsets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["daemonsets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-statefulsets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["statefulsets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-replicationcontrollers
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["replicationcontrollers"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-replicasets
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["replicasets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-cronjobs
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["cronjobs"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-jobs
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["jobs"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-roles
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["roles"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-clusterroles
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["clusterroles"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-rolebindings
+  
+rules:
+- apiGroups: ["*"]
+  resources: ["rolebindings"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-clusterrolebindings
+rules:
+- apiGroups: ["*"]
+  resources: ["clusterrolebindings"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-users
+rules:
+- apiGroups: ["*"]
+  resources: ["users"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: Role
+metadata:
+  namespace: test2
+  name: check-any-verb-groups
+rules:
+- apiGroups: ["*"]
+  resources: ["groups"]
+  verbs: ["*"]
+

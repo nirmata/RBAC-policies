@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: badcrb01
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: bar1
+roleRef:
+  kind: ClusterRole
+  name: check-execute-command-node-proxy
+  apiGroup: rbac.authorization.k8s.io

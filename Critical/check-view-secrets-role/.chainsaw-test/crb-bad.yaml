@@ -1,0 +1,26 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: badcrb01
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: bar1
+roleRef:
+  kind: ClusterRole
+  name: check-get-secrets
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: badcrb02
+subjects:
+- kind: ServiceAccount
+  namespace: test2
+  name: bar2
+roleRef:
+  kind: ClusterRole
+  name: check-list-secrets
+  apiGroup: rbac.authorization.k8s.io

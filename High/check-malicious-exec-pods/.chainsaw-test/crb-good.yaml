@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: goodcrb01
+subjects:
+- kind: ServiceAccount
+  namespace: test4
+  name: bar1
+roleRef:
+  kind: ClusterRole
+  name: check-exec-pods
+  apiGroup: rbac.authorization.k8s.io

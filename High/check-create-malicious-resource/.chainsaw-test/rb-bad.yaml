@@ -1,0 +1,111 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb02
+subjects:
+- kind: ServiceAccount
+  name: bar2
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-pods
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb03
+subjects:
+- kind: ServiceAccount
+  name: bar3
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-deployments
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb04
+subjects:
+- kind: ServiceAccount
+  name: bar4
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-daemonsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb05
+subjects:
+- kind: ServiceAccount
+  name: bar5
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-statefulsets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb06
+subjects:
+- kind: ServiceAccount
+  name: bar6
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-replicationcontrollers
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb07
+subjects:
+- kind: ServiceAccount
+  name: bar7
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-replicasets
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb08
+subjects:
+- kind: ServiceAccount
+  name: bar8
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-cronjobs
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: test2
+  name: badrb09
+subjects:
+- kind: ServiceAccount
+  name: bar9
+  namespace: bar
+roleRef:
+  kind: Role
+  name: check-create-update-jobs
+  apiGroup: rbac.authorization.k8s.io
