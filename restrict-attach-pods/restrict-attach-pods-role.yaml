@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-attach-pods-role 
+  annotations:
+    policies.kyverno.io/title: Attaching pod and view all its logs in realtime
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32" 
+    policies.kyverno.io/subject: Role
+    policies.kyverno.io/description: >-
+      This policy will check for all the subject like ServiceAccounts/Users/Groups which are mapped with a Role allowing the user to attach a shell with a pod and view the logs in realtime.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: restrict-attach-pods-role 
+      match:
+        any:
+        - resources:
+            kinds:
+            - Role
+      context:
+        - name: rolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/namespaces/{{ request.object.metadata.namespace }}/rolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+          RoleBinding {{ rolebinding[].metadata.name }} with subjects {{ rolebinding[].subjects[].name }}
+           is using role {{request.object.metadata.name}} which can allow users to attach a shell with a pod and view the logs in realtime.
+        deny:
+          conditions:
+            any:
+              - key: "{{ ( contains(to_array(request.object.rules[].verbs[]), 'create') && contains(to_array(request.object.rules[].resources[]), 'pods/attach')) && (contains(to_array(request.object.rules[].verbs[]), 'get') && contains(to_array(request.object.rules[].resources[]), 'pods')) && contains(to_array(request.object.rules[].apiGroups[]), '*') }}"
+                operator: Equals
+                value: true

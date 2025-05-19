@@ -1,0 +1,41 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-create-binding-privilege-role 
+  annotations:
+    policies.kyverno.io/title: Allowing creation of rolebinding/clusterrolebinding and associate privileged clusterrole to itself
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32"
+    policies.kyverno.io/subject: ClusterRole
+    policies.kyverno.io/description: >-
+      This policy will check for all the subjects like service accounts, users, groups which are mapped with the rolebinding/clusterrolebinding allowing privileged clusterrole to be associated. 
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: restrict-create-binding-privilege-role
+      match:
+        any:
+          - resources:
+              kinds:
+                - ClusterRole
+      context:
+        - name: rolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/rolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+           RoleBinding {{ rolebinding[].metadata.name }} with subjects {{ rolebinding[].subjects[].name }} 
+           is attached to a privileged ClusterRole "{{request.object.metadata.name}} which allows creation of rolebindings and association of privileged clusterrole to itself"
+        deny:
+          conditions:
+            any:
+              - key: "{{ ( contains(to_array(request.object.rules[].verbs[]), 'create') && contains(to_array(request.object.rules[].resources[]), 'rolebindings') && contains(to_array(request.object.rules[].apiGroups[]), 'rbac.authorization.k8s.io')) && (contains(to_array(request.object.rules[].verbs[]), 'bind') && contains(to_array(request.object.rules[].resources[]), 'clusterroles') && contains(to_array(request.object.rules[].apiGroups[]), 'rbac.authorization.k8s.io')) }}"
+                operator: Equals
+                value: true
+
+

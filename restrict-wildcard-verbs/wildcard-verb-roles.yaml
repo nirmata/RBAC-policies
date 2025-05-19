@@ -1,0 +1,40 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-wildcard-verbs-in-roles
+  annotations:
+    policies.kyverno.io/title: Check for ServiceAccounts/Users/Groups with non compliant Roles having wildcard verbs.
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: critical
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.28"
+    policies.kyverno.io/subject: rolebinding
+    policies.kyverno.io/description: >-
+      This policy will check for all the service accounts which are mapped with the wildcard verb for any resources or apiGroup.
+
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: restrict-wildcard-verbs-in-roles
+      match:
+        any:
+          - resources:
+              kinds:
+                - Role
+      context:
+        - name: rolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/namespaces/{{ request.object.metadata.namespace }}/rolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+           "RoleBinding {{ rolebinding[].metadata.name }} with {{ rolebinding[].subjects[].kind }} {{ rolebinding[].subjects[].name }}
+            is using role {{request.object.metadata.name}} with wildcard verbs"
+        deny:
+          conditions:
+            any:
+              - key: "{{ contains(to_array(request.object.rules[].verbs[]), '*') }}"
+                operator: Equals
+                value: true

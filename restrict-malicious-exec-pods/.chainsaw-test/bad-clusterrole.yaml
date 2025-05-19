@@ -1,0 +1,11 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: restrict-malicious-exec-pods-clusterrole
+rules:
+  - apiGroups: ["*"]
+    resources: ["pods/exec"]
+    verbs: ["create"]
+  - apiGroups: ["*"]
+    resources: ["pods"]
+    verbs: ["get"]

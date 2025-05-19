@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: restrict-privilege-escalation-for-node-proxy-role
+rules:
+- apiGroups: ["*"]
+  resources: ["nodes/proxy"]
+  verbs: ["update"]

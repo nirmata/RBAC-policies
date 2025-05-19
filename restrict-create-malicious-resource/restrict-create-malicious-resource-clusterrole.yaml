@@ -1,0 +1,40 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-create-malicious-resource-clusterrole
+  annotations:
+    policies.kyverno.io/title: Allowing to create a malicious pod
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32"
+    policies.kyverno.io/subject: ClusterRole
+    policies.kyverno.io/description: >-
+      This policy will check for all the subjects like ServiceAccounts/Users/Groups which are mapped with a ClusterRole allowing user to create malicious pods
+      (deployment, daemonsets, statefulsets, replicationcontollers, replicasets, jobs, cronjobs) for wildcard apiGroups.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: restrict-create-malicious-resource-clusterrole
+      match:
+        any:
+        - resources:
+            kinds:
+            - ClusterRole
+      context:
+        - name: clusterrolebinding 
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+            ClusterRoleBinding {{clusterrolebinding[].metadata.name}} with subjects {{clusterrolebinding[].subjects[].name}}
+            is using role {{clusterrolebinding[].roleRef.name}} which can allow users to create malicious pods
+        deny:
+          conditions:
+            any:
+              - key: "{{ ( contains(to_array(request.object.rules[].verbs[]), 'create') || contains(to_array(request.object.rules[].verbs[]), 'update')) && ( contains(to_array(request.object.rules[].resources[]), 'pods') || contains(to_array(request.object.rules[].resources[]), 'deployments') || contains(to_array(request.object.rules[].resources[]), 'daemonsets') || contains(to_array(request.object.rules[].resources[]), 'statefulsets') || contains(to_array(request.object.rules[].resources[]), 'replicationcontrollers') || contains(to_array(request.object.rules[].resources[]), 'replicasets') || contains(to_array(request.object.rules[].resources[]), 'jobs') || contains(to_array(request.object.rules[].resources[]), 'cronjobs')) && contains(to_array(request.object.rules[].apiGroups[]), '*') }}"
+                operator: Equals
+                value: true
