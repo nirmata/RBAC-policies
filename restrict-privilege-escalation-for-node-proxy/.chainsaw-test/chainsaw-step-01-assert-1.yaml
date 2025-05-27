@@ -1,0 +1,9 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-privilege-escalation-for-node-proxy-clusterrole
+status:
+  conditions:
+  - reason: Succeeded
+    status: "True"
+    type: Ready

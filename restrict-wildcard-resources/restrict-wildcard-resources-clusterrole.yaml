@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-wildcard-resources-clusterrole
+  annotations:
+    policies.kyverno.io/title: Check for subject like ServiceAccount/User/Group with non compliant ClusterRoles which allow wildcard resource.
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: critical
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32"
+    policies.kyverno.io/subject: ClusterRole 
+    policies.kyverno.io/description: >-
+      This policy will check for all the subjects like ServiceAccount/User/Group which are mapped with the non compliant ClusterRoles which allow wildcard resource.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-wildcard-resources-clusterrole
+      match:
+        any:
+        - resources:
+            kinds:
+            - ClusterRole
+      context:
+        - name: clusterrolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+           ClusterRoleBinding {{ clusterrolebinding[].metadata.name }} with {{ clusterrolebinding[].subjects[].kind }} {{ clusterrolebinding[].subjects[].name }}
+           is using role {{request.object.metadata.name}} with wildcard resources
+        deny:
+          conditions:
+            any:
+              - key: "{{ contains(to_array(request.object.rules[].resources[]), '*') }}"
+                operator: Equals
+                value: true

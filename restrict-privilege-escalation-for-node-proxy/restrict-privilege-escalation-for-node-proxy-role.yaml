@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-privilege-escalation-for-node-proxy-role
+  annotations:
+    policies.kyverno.io/title: Privilege Escalation from Node/Proxy
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32"
+    policies.kyverno.io/subject: Role
+    policies.kyverno.io/description: >-
+      This policy will check for all the subjects like ServiceAccount/User/Group which are mapped with Roles allowing listing and creating node/proxy resource.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: restrict-privilege-escalation-for-node-proxy-role
+      match:
+        any:
+        - resources:
+            kinds:
+            - Role
+      context:
+        - name: rolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/namespaces/{{ request.object.metadata.namespace }}/rolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+           RoleBinding {{ rolebinding[].metadata.name }} with {{ rolebinding[].subjects[].kind }} {{ rolebinding[].subjects[].name }}
+           is using role {{request.object.metadata.name}} which can allow users to list and create node/proxy resource.
+        deny:
+          conditions:
+            any:
+              - key: "{{ (contains(to_array(request.object.rules[].verbs[]), 'get') || contains(to_array(request.object.rules[].verbs[]), 'create')) && contains(to_array(request.object.rules[].resources[]), 'nodes/proxy') && contains(to_array(request.object.rules[].apiGroups[]), '*') }}"
+                operator: Equals
+                value: true

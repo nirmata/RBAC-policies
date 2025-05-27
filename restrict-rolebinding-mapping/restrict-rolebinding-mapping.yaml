@@ -1,0 +1,39 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: restrict-rolebinding-mapping
+  annotations:
+    policies.kyverno.io/title:  Restricting users in a rolebinding to add other users to their rolebindings
+    policies.kyverno.io/category: RBAC
+    policies.kyverno.io/severity: high
+    policies.kyverno.io/minversion: 1.12.0
+    kyverno.io/kyverno-version: 1.12.0
+    kyverno.io/kubernetes-version: "1.32"
+    policies.kyverno.io/subject: Role
+    policies.kyverno.io/description: >-
+      This policy will restrict users in a rolebinding to add other users to their rolebinding.
+spec:
+  validationFailureAction: Audit
+  background: true
+  rules:
+    - name: check-create-update-malicious-resource-roles
+      match:
+        any:
+          - resources:
+              kinds:
+                - Role
+      context:
+        - name: rolebinding
+          apiCall:
+            urlPath: "/apis/rbac.authorization.k8s.io/v1/namespaces/{{ request.object.metadata.namespace }}/rolebindings"
+            jmesPath: "items[?roleRef.name=='{{ request.object.metadata.name }}']"
+      validate:
+        message: >- 
+           RoleBinding {{ rolebinding[].metadata.name }} with {{ rolebinding[].subjects[].kind }} {{ rolebinding[].subjects[].name }} 
+           is using "{{request.object.metadata.name}} which can allow users to add other users to their rolebinding.
+        deny:
+          conditions:
+            any:
+              - key: "{{ ( contains(to_array(request.object.rules[].verbs[]), 'get') || contains(to_array(request.object.rules[].verbs[]), 'patch')) && contains(to_array(request.object.rules[].resources[]), 'rolebindings') && contains(to_array(request.object.rules[].apiGroups[]), '*')}}"
+                operator: Equals
+                value: true
