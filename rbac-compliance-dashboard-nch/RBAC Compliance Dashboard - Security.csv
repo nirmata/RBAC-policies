@@ -1,0 +1,109 @@
+name,controlId,description,cloudProviders,policy,rule,id,isManual
+Restrict Secrets Access,1,"Secrets in Kubernetes contain sensitive information like credentials, tokens, and keys. This policy helps:
+
+- Identify who has access to Secrets
+- Prevent unauthorized access to sensitive data
+- Maintain security best practices
+- Comply with security standards and regulations","AWS, Azure, GCP",restrict-secrets-access-clusterroles,restrict-secrets-access-clusterroles,,
+Restrict Secrets Access,1,"Secrets in Kubernetes contain sensitive information like credentials, tokens, and keys. This policy helps:
+
+- Identify who has access to Secrets
+- Prevent unauthorized access to sensitive data
+- Maintain security best practices
+- Comply with security standards and regulations","AWS, Azure, GCP",restrict-secrets-access-roles,restrict-secrets-access-roles,,
+Disallow Wildcard (*) Operation,2,"Using wildcard verbs (`*`) in RBAC rules grants excessive permissions and violates the principle of least privilege. This policy helps:
+
+- Identify overly permissive RBAC configurations
+- Track which subjects have broad permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-wildcard-verbs-in-clusterroles,restrict-wildcard-verbs-in-clusterroles,,
+Disallow Wildcard (*) Operation,2,"Using wildcard verbs (`*`) in RBAC rules grants excessive permissions and violates the principle of least privilege. This policy helps:
+
+- Identify overly permissive RBAC configurations
+- Track which subjects have broad permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-wildcard-verbs-in-roles,restrict-wildcard-verbs-in-roles,,
+Disallow Wildcard (*) Resources,3,"Using wildcard resources (`*`) in RBAC rules grants excessive permissions across all resource types. This policy helps:
+
+- Prevent overly permissive resource access
+- Identify subjects with broad resource permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-wildcard-resources-clusterrole,restrict-wildcard-resources-clusterrole,,
+Disallow Wildcard (*) Resources,3,"Using wildcard resources (`*`) in RBAC rules grants excessive permissions across all resource types. This policy helps:
+
+- Prevent overly permissive resource access
+- Identify subjects with broad resource permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-wildcard-resources-role,restrict-wildcard-resources-role,,
+Prevent Privilege Escalation,4,"Group impersonation in Kubernetes can be a security risk as it allows users to act as different groups. This policy helps:
+
+- Prevent unauthorized group impersonation
+- Identify subjects with impersonation capabilities
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-impersonating-groups-clusterroles,restrict-impersonating-groups-clusterroles,,
+Prevent Privilege Escalation,4,"Group impersonation in Kubernetes can be a security risk as it allows users to act as different groups. This policy helps:
+
+- Prevent unauthorized group impersonation
+- Identify subjects with impersonation capabilities
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-impersonating-groups-role,restrict-impersonating-groups-roles,,
+Restrict Pod Access,5,"The ability to attach to pods can be misused for unauthorized access if not properly restricted. This policy helps:
+
+- Prevent unauthorized attachment to pods
+- Identify subjects with attach permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-attach-pods-clusterrole,restrict-attach-pods-clusterrole,,
+Restrict Pod Access,5,"The ability to attach to pods can be misused for unauthorized access if not properly restricted. This policy helps:
+
+- Prevent unauthorized attachment to pods
+- Identify subjects with attach permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-attach-pods-role,restrict-attach-pods-role,,
+Prevent Privilege Escalation,4,"The ability to create bindings to privileged roles is a critical security concern. This policy helps:
+
+- Prevent privilege escalation by unauthorized binding creation
+- Identify subjects with excessive binding permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-create-binding-privilege-role,restrict-create-binding-privilege-role,,
+Prevent Malicious Resource Creation,6,"The ability to create certain Kubernetes resources can be misused for privilege escalation and security compromises. This policy helps:
+
+- Prevent unauthorized creation of high-risk resources
+- Identify subjects with excessive creation permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-create-malicious-resource-clusterrole,restrict-create-malicious-resource-clusterrole,,
+Prevent Malicious Resource Creation,6,"The ability to create certain Kubernetes resources can be misused for privilege escalation and security compromises. This policy helps:
+
+- Prevent unauthorized creation of high-risk resources
+- Identify subjects with excessive creation permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-create-malicious-resource-role,restrict-create-malicious-resource-role,,
+Restrict Pod Access,5,"The ability to execute commands in pods can be misused for malicious purposes if not properly restricted. This policy helps:
+
+- Prevent unauthorized command execution in pods
+- Identify subjects with exec permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-malicious-exec-pods-clusterrole,restrict-malicious-exec-pods-clusterrole,,
+Restrict Pod Access,5,"The ability to execute commands in pods can be misused for malicious purposes if not properly restricted. This policy helps:
+
+- Prevent unauthorized command execution in pods
+- Identify subjects with exec permissions
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-malicious-exec-pods-role,restrict-malicious-exec-pods-role,,
+Restrict Node Proxy Access,8,"The Kubernetes Node Proxy API can be used for privilege escalation if not properly restricted. This policy helps:
+
+- Prevent potential privilege escalation paths
+- Identify subjects with Node Proxy access
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-privilege-escalation-for-node-proxy-clusterrole,restrict-privilege-escalation-for-node-proxy-clusterrole,,
+Restrict Node Proxy Access,8,"The Kubernetes Node Proxy API can be used for privilege escalation if not properly restricted. This policy helps:
+
+- Prevent potential privilege escalation paths
+- Identify subjects with Node Proxy access
+- Maintain security best practices
+- Comply with security standards","AWS, Azure, GCP",restrict-privilege-escalation-for-node-proxy-role,restrict-privilege-escalation-for-node-proxy-role,,
+Prevent Unauthorized Role Assignment ,9,"Improper role binding mappings can lead to security risks and privilege escalation. This policy helps:
+
+- Prevent unauthorized role assignments
+- Identify subjects with excessive permissions
+- Maintain proper access control
+- Comply with security standards","AWS, Azure, GCP",restrict-rolebinding-mapping,restrict-rolebinding-mapping,,
