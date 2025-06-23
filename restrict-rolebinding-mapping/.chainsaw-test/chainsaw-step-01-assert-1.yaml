@@ -2,6 +2,8 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: restrict-rolebinding-mapping
+spec:
+  validationActions: [Deny]
 status:
   conditions:
   - reason: Succeeded

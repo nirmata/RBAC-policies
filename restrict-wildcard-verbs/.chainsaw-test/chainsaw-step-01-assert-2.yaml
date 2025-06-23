@@ -2,6 +2,8 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: restrict-wildcard-verbs-in-roles
+spec:
+  validationActions: [Deny]
 status:
   conditions:
   - reason: Succeeded

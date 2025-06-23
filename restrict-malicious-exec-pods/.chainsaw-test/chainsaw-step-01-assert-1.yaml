@@ -2,6 +2,8 @@ apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
   name: restrict-malicious-exec-pods-clusterrole
+spec:
+  validationActions: [Deny]
 status:
   conditions:
   - reason: Succeeded

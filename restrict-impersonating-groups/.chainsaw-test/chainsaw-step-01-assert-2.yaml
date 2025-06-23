@@ -1,7 +1,9 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: restrict-impersonating-groups-role
+  name: restrict-impersonating-groups-roles
+spec:
+  validationActions: [Deny]
 status:
   conditions:
   - reason: Succeeded
